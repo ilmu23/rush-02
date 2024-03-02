@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   rush.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 14:26:57 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/02 14:53:24 by ivalimak         ###   ########.fr       */
+/*   Created: 2024/03/02 14:08:26 by ivalimak          #+#    #+#             */
+/*   Updated: 2024/03/02 15:22:11 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_putstr_fd.c
- */
+#ifndef RUSH_H
+# define RUSH_H
+# include "libft.h"
+# include <fcntl.h>
+# define E_ARGS 1
+# define E_DICT 2
 
-#include "libft.h"
-
-/** @brief Writes s to fd
- *
- * @param *s String to write
- * @param fd File descriptor to write to
- * @retval int Amount of bytes written or -1 if an error occurred
- */
-int	ft_putstr_fd(const char *s, int fd)
+typedef struct t_dict
 {
-	if (!s)
-		return (ft_putstr_fd("(null)", fd));
-	return (write(fd, s, ft_strlen(s)));
-}
+	uint64_t	val;
+	char		*str;
+}	t_dict;
+
+// dict.c
+int		getdict(const char *fname, t_list **dict);
+
+#endif

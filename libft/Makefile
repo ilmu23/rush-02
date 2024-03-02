@@ -6,13 +6,13 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 15:26:18 by ivalimak          #+#    #+#              #
-#    Updated: 2024/02/26 12:54:55 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/03/02 15:32:59 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-BUILD	=	normal
+BUILD	=	debug
 
 CC				=	cc
 cflags.common	=	-Wall -Wextra -Werror
@@ -24,6 +24,7 @@ CFLAGS			=	$(cflags.common) $(cflags.$(BUILD))
 
 SRCS	=	ft_atoi.c \
 			ft_atol.c \
+			ft_atou64.c \
 			ft_free.c \
 			ft_bzero.c \
 			ft_alloc.c \
