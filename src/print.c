@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:54:38 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/03 12:34:36 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/03 13:19:30 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	putspecial(uint16_t **src, t_number *nbr, t_list *dict)
 	if (*src == &nbr->hundreds)
 	{
 		ft_putstr_fd(dict_getentry(dict, **src), 1);
-		ft_putchar_fd('-', 1);
+		ft_putchar_fd(' ', 1);
 		ft_putstr_fd(dict_getentry(dict, HNDR), 1);
 	}
 	else if (*src == &nbr->tens && **src > 1)
@@ -92,7 +92,7 @@ static void	putprefix(uint16_t *src, t_list *dict)
 	if (*src > 99)
 	{
 		ft_putstr_fd(dict_getentry(dict, *src / 100), 1);
-		ft_putchar_fd('-', 1);
+		ft_putchar_fd(' ', 1);
 		ft_putstr_fd(dict_getentry(dict, HNDR), 1);
 		*src %= 100;
 		if (*src)

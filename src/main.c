@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 14:08:13 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/03 12:24:49 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/03 13:29:27 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static uint8_t	checkargs(int16_t argc, char *n);
 static uint8_t	checknbr(char *n);
+static char		*trimzeros(char *n);
 
 int	main(int argc, char **argv)
 {
@@ -22,9 +23,9 @@ int	main(int argc, char **argv)
 	char		*n;
 
 	if (argc == 1)
-		n = ft_push(ft_strtrim(get_next_line(0), "\n"));
+		n = ft_push(trimzeros(ft_strtrim(get_next_line(0), "\n")));
 	else
-		n = ft_push(ft_strdup(argv[argc - 1]));
+		n = ft_push(trimzeros(argv[argc - 1]));
 	if (!checkargs(argc, n))
 	{
 		ft_putendl_fd("Error", 2);
@@ -37,7 +38,10 @@ int	main(int argc, char **argv)
 		ft_putendl_fd("Dict Error", 2);
 		return (ft_return(E_DICT));
 	}
-	print(n, dict);
+	if (ft_atou64(n))
+		print(n, dict);
+	else
+		ft_putendl_fd(dict_getentry(dict, 0), 1);
 	return (ft_return(0));
 }
 
@@ -50,13 +54,28 @@ static uint8_t	checkargs(int16_t argc, char *n)
 
 static uint8_t	checknbr(char *n)
 {
+	ft_dprintf(2, "checknbr: n: '%s'\n", n);
 	if (!n)
-		return (0);
-	while (ft_isspace(*n))
-		n++;
-	if (!ft_isdigit(*n) && *n != '+')
 		return (0);
 	if (!ft_atou64(n) && !ft_strequals(n , "0"))
 		return (0);
+	while (*n)
+	{
+		if (!ft_isdigit(*n++))
+			return (0);
+	}
 	return (1);
+}
+
+static char		*trimzeros(char *n)
+{
+	if (!n)
+		return (NULL);
+	while (ft_isspace(*n))
+		n++;
+	if (!ft_isdigit(*n) && *n != '+')
+		return (NULL);
+	while (*n == '0' && n[1])
+		n++;
+	return (ft_strdup(n));
 }
