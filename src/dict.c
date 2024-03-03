@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 14:19:20 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/02 15:48:02 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/03 09:57:35 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,18 @@ static t_dict	*dict_entry(char **line);
 static char		**getentry(int fd, char *err);
 static int		isvalid(const char *line, size_t *i, size_t *j);
 
-int	getdict(const char *fname, t_list **dict)
+char	*dict_getentry(t_list *dict, uint64_t val)
+{
+	while (dict)
+	{
+		if (((t_dict *)dict->blk)->val == val)
+			return (((t_dict *)dict->blk)->str);
+		dict = dict->next;
+	}
+	return (NULL);
+}
+
+int	parsedict(const char *fname, t_list **dict)
 {
 	char	**line;
 	char	err;
@@ -31,7 +42,7 @@ int	getdict(const char *fname, t_list **dict)
 	{
 		if (*line[0] != '-'
 			&& (ft_atou64(line[0]) || ft_strequals(line[0], "0")))
-			ft_lstadd_back(dict, ft_lstnew(dict_entry(line)));		
+			ft_lstadd_back(dict, ft_lstnew(dict_entry(line)));
 		line = getentry(fd, &err);
 	}
 	close(fd);
@@ -54,7 +65,7 @@ static t_dict	*dict_entry(char **line)
 	return (out);
 }
 
-static char		**getentry(int fd, char *err)
+static char	**getentry(int fd, char *err)
 {
 	char	**out;
 	char	*line;
@@ -88,7 +99,7 @@ static int	isvalid(const char *line, size_t *i, size_t *j)
 	while (ft_isspace(line[*j]))
 		(*j)++;
 	if (line[*j] != ':')
-		return (0);;
+		return (0);
 	(*j)++;
 	while (ft_isspace(line[*j]))
 		(*j)++;

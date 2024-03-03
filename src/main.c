@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 14:08:13 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/02 15:51:53 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:02:21 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ int	main(int argc, char **argv)
 	}
 	if (argc == 3)
 		fname = argv[1];
-	if (!getdict(fname, &dict))
+	if (!parsedict(fname, &dict))
 	{
 		ft_putendl_fd("Dict Error", 2);
 		return (ft_return(E_DICT));
 	}
+	print(argv[argc - 1], dict);
 	return (ft_return(0));
 }
