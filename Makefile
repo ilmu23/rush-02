@@ -6,7 +6,7 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/02 14:51:42 by ivalimak          #+#    #+#              #
-#    Updated: 2024/03/02 17:17:36 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/03/03 11:54:08 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,10 @@ LIBFT	=	$(LIBDIR)/libft.a
 
 SRCFILES	=	main.c \
 				dict.c \
+				check.c \
 				print.c \
+				check2.c \
+				print2.c \
 				number.c
 
 SRCS	=	$(addprefix $(SRCDIR)/, $(SRCFILES))

@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:54:38 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/03 09:58:38 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/03 12:34:36 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	putspecial(uint16_t **src, t_number *nbr, t_list *dict)
 	{
 		ft_putstr_fd(dict_getentry(dict, **src), 1);
 		ft_putchar_fd('-', 1);
-		ft_putstr_fd(dict_getentry(dict, 100), 1);
+		ft_putstr_fd(dict_getentry(dict, HNDR), 1);
 	}
 	else if (*src == &nbr->tens && **src > 1)
 		ft_putstr_fd(dict_getentry(dict, **src * 10), 1);
@@ -69,19 +69,22 @@ static void	putspecial(uint16_t **src, t_number *nbr, t_list *dict)
 static void	putnumber(uint16_t *src, t_number *nbr, t_list *dict)
 {
 	uint64_t	n;
+	uint16_t	*tmp;
 
 	putprefix(src, dict);
 	n = 1;
-	while (src != &nbr->ones)
+	tmp = src;
+	while (tmp != &nbr->ones)
 	{
-		if (src < &nbr->thousands)
+		if (tmp < &nbr->thousands)
 			n *= 1000;
 		else
 			n *= 10;
-		src++;
+		tmp++;
 	}
 	ft_putstr_fd(dict_getentry(dict, n), 1);
-	ft_putstr_fd(", ", 1);
+	if (ntou64(&nbr->ones, src + 1, nbr))
+		ft_putstr_fd(", ", 1);
 }
 
 static void	putprefix(uint16_t *src, t_list *dict)
@@ -90,7 +93,7 @@ static void	putprefix(uint16_t *src, t_list *dict)
 	{
 		ft_putstr_fd(dict_getentry(dict, *src / 100), 1);
 		ft_putchar_fd('-', 1);
-		ft_putstr_fd(dict_getentry(dict, 100), 1);
+		ft_putstr_fd(dict_getentry(dict, HNDR), 1);
 		*src %= 100;
 		if (*src)
 			ft_putstr_fd(" and ", 1);

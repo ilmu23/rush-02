@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 14:19:20 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/03 09:57:35 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/03 11:06:09 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*dict_getentry(t_list *dict, uint64_t val)
 	return (NULL);
 }
 
-int	parsedict(const char *fname, t_list **dict)
+uint8_t	parsedict(const char *fname, t_list **dict)
 {
 	char	**line;
 	char	err;
@@ -75,6 +75,8 @@ static char	**getentry(int fd, char *err)
 	line = ft_push(ft_strtrim(get_next_line(fd), "\n"));
 	if (!line)
 		return (NULL);
+	if (!*line)
+		return (ft_split("!", ' '));
 	out = ft_push(ft_calloc(3, sizeof(char *)));
 	if (!out)
 		*err = 1;
