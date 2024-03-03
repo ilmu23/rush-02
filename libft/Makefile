@@ -6,13 +6,13 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 15:26:18 by ivalimak          #+#    #+#              #
-#    Updated: 2024/03/02 15:32:59 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/03/03 13:08:29 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-BUILD	=	debug
+BUILD	=	normal
 
 CC				=	cc
 cflags.common	=	-Wall -Wextra -Werror

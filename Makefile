@@ -6,13 +6,13 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/02 14:51:42 by ivalimak          #+#    #+#              #
-#    Updated: 2024/03/03 11:54:08 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/03/03 13:08:18 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	rush-02
 
-BUILD	=	debug
+BUILD	=	normal
 
 CC 				=	cc
 cflags.common	=	-Wall -Wextra -Werror
