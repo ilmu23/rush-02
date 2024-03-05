@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 14:08:13 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/03 13:29:27 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:09:45 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static uint8_t	checkargs(int16_t argc, char *n)
 
 static uint8_t	checknbr(char *n)
 {
-	ft_dprintf(2, "checknbr: n: '%s'\n", n);
 	if (!n)
 		return (0);
 	if (!ft_atou64(n) && !ft_strequals(n , "0"))
