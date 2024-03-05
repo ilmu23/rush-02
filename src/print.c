@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:54:38 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/03 13:19:30 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:07:52 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,10 @@ void	print(char *n, t_list *dict)
 	{
 		if (*src)
 		{
-			if (!checkcase(&src, &nbr, dict))
-			{
-				if (src == &nbr.hundreds || src == &nbr.tens || src == &nbr.ones)
-					putspecial(&src, &nbr, dict);
-				else
-					putnumber(src, &nbr, dict);
-			}
+			if (src == &nbr.hundreds || src == &nbr.tens || src == &nbr.ones)
+				putspecial(&src, &nbr, dict);
+			else
+				putnumber(src, &nbr, dict);
 		}
 		if (src != &nbr.ones)
 			src++;

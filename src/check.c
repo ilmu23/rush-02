@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:06:35 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/03 12:31:53 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:08:33 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,13 @@ static uint8_t	checkvals(t_number *nbr, t_list *dict)
 	while (src <= &nbr->thousands)
 	{
 		if (*src && !checkval(*src, dict))
-		{
-			if (!checkspecial(&src, nbr, dict))
-				return (0);
-		}
+			return (0);
 		src++;
 	}
 	if (src == &nbr->hundreds)
 	{
 		if (!checkval(ntou64(&nbr->ones, src, nbr), dict))
-		{
-			if (!checkspecial(&src, nbr, dict))
-				return (0);
-		}
+			return (0);
 	}
 	return (1);
 }
