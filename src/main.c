@@ -6,7 +6,7 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 14:08:13 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/05 11:09:45 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/08/20 15:46:01 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	}
 	if (argc == 3)
 		fname = argv[1];
+	dict = NULL;
 	if (!parsedict(fname, &dict) || !checkdict(ft_strdup(n), dict))
 	{
 		ft_putendl_fd("Dict Error", 2);

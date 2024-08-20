@@ -6,12 +6,13 @@
 /*   By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:47:46 by ivalimak          #+#    #+#             */
-/*   Updated: 2024/03/02 15:28:06 by ivalimak         ###   ########.fr       */
+/*   Updated: 2024/08/06 20:18:18 by ivalimak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <stdint.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>

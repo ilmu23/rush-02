@@ -6,7 +6,7 @@
 #    By: ivalimak <ivalimak@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/02 14:51:42 by ivalimak          #+#    #+#              #
-#    Updated: 2024/03/05 11:08:45 by ivalimak         ###   ########.fr        #
+#    Updated: 2024/08/20 15:42:24 by ivalimak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,18 +48,18 @@ $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
 $(LIBFT):
-	@make -C $(LIBDIR) BUILD=$(BUILD)
+	@make -C $(LIBDIR) --no-print-directory BUILD=$(BUILD)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	@echo Compiling $@
 	@$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBDIR) -c $< -o $@
 
 clean:
-	@make -C $(LIBDIR) clean
+	@make -C $(LIBDIR) --no-print-directory clean
 	@rm -f $(OBJS)
 
 fclean: clean
-	@make -C $(LIBDIR) fclean
+	@make -C $(LIBDIR) --no-print-directory fclean
 	@rm -rf $(OBJDIR)
 	@rm -f $(NAME)
 
